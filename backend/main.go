@@ -13,6 +13,7 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/api/news", getNews).Methods("GET")
 
+	fmt.Println("http://localhost:8000")
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
