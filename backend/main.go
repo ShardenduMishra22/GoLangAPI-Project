@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"github/ShardenduMishra22/db"
 	"log"
 	"net/http"
 
@@ -10,6 +12,13 @@ import (
 )
 
 func main() {
+	client := db.Db() // Initialize MongoDB connection
+	defer func() {
+		if err := client.Disconnect(context.TODO()); err != nil {
+			log.Fatalf("Failed to disconnect MongoDB client: %v", err)
+		}
+	}()
+
 	router := mux.NewRouter()
 	router.HandleFunc("/api/news", getNews).Methods("GET")
 
@@ -36,13 +45,15 @@ func getNews(w http.ResponseWriter, r *http.Request) {
 			Content: "AI is taking over the world. It is the future of technology and will be the driving force behind all future innovations.",
 		},
 		{
-			Title:   "Enviornamental Changes",
+			Title:   "Environmental Changes",
 			Content: "The world is changing. The climate is changing. We need to take action now to save our planet.",
 		},
 	}
 
-	json.NewEncoder(w).Encode(news)
-
-	// why dont we reutrn anything here?
-	// return news
+	err := json.NewEncoder(w).Encode(news)
+	if err != nil {
+		log.Printf("Error encoding JSON: %v", err)
+		http.Error(w, "Error encoding JSON", http.StatusInternalServerError)
+		return // Add return here to avoid further attempts to write to the response
+	}
 }
