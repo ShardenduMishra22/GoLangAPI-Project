@@ -1,0 +1,27 @@
+// Supposed File Structure 
+
+/personalized-news-aggregator
+│
+├── /backend
+│   ├── /api
+│   ├── /db
+│   ├── /handlers
+│   └── server.go
+│
+├── /client
+│   ├── /public
+│   ├── /src
+│   │   ├── /components
+│   │   ├── /services
+│   │   ├── App.tsx
+│   │   ├── index.tsx
+│   └── package.json
+│
+├── /chrome-extension
+│   ├── manifest.json
+│   ├── background.js
+│   └── /popup
+│        ├── index.html
+│        └── popup.tsx
+│
+└── README.md
