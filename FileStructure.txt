@@ -1,0 +1,43 @@
+personalized-news-aggregator/
+├── chrome-extension/
+│   ├── manifest.json
+│   ├── popup/
+│   │   ├── popup.html
+│   │   ├── popup.tsx
+│   │   ├── popup.css
+│   ├── background.js
+│   └── icons/
+│       ├── icon16.png
+│       ├── icon48.png
+│       └── icon128.png
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   ├── news.js
+│   │   └── user.js
+│   ├── controllers/
+│   │   ├── newsController.js
+│   │   └── userController.js
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Article.js
+│   ├── db/
+│   │   └── connect.js
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   └── .env
+├── frontend/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ArticleList.tsx
+│   │   │   └── UserPreferences.tsx
+│   │   ├── context/
+│   │   │   └── UserContext.tsx
+│   │   ├── App.tsx
+│   │   ├── index.tsx
+│   │   └── api/
+│   │       └── newsApi.ts
+├── .gitignore
+└── README.md
