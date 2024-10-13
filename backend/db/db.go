@@ -2,12 +2,14 @@ package db
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
 func Db() *mongo.Client {
@@ -25,5 +27,11 @@ func Db() *mongo.Client {
 		log.Fatalf("Error connecting to MongoDB")
 	}
 
+	err = client.Ping(context.TODO(), readpref.Primary())
+	if err != nil {
+		log.Fatalf("Could not ping MongoDB server: %v", err)
+	}
+
+	fmt.Println("Successfully connected to MongoDB!")
 	return client
 }
