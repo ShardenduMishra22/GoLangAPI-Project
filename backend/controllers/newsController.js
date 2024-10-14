@@ -4,8 +4,10 @@ import Article from '../models/Article.js';
 export const getNews = async (req, res) => {
     try {
         const API_KEY = process.env.API_KEY;
-        const country = 'in';
+        const country = 'us';
         const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${API_KEY}`);
+
+        console.log('Response from News API:', response.data); // Log the entire response
 
         if (!response.data.articles || response.data.articles.length === 0) {
             return res.status(404).json({ message: 'No articles found' });
@@ -17,6 +19,7 @@ export const getNews = async (req, res) => {
         res.status(500).json({ message: 'Error Fetching the News' });
     }
 };
+
 
 export const getAllArticles = async (req, res) => {
     try {
