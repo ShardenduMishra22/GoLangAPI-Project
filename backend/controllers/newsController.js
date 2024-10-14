@@ -12,7 +12,7 @@ export const getNews = async (req, res) => {
         if (!response.data.articles || response.data.articles.length === 0) {
             return res.status(404).json({ message: 'No articles found' });
         }
-
+        
         res.json(response.data.articles);
     } catch (error) {
         console.error('Error in getNews function:', error);

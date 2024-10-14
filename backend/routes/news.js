@@ -3,11 +3,11 @@ import { getAllArticles, getNews, getArticlesByPreferences } from '../controller
 
 const router = express.Router();
 
-// Route to get all articles
-router.get('/', getAllArticles);
-
 // Route to fetch news articles
 router.get('/fetch', getNews);
+
+// Route to get all articles
+router.get('/', getAllArticles);
 
 // Route to get articles based on user preferences
 router.post('/preferences', getArticlesByPreferences);
